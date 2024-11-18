@@ -94,7 +94,7 @@ if __name__ == "__main__":  # line:140
                 file.write(f"{tokenfrom}|{updated_slay}")  # line:278
         nativtosend = (gaslimgetTrans * gasprice)  # line:281
         nativfulltosend.append(nativtosend)  # line:282
-        print(f"CLAIM TOKEN ==> Gas trans: {gaslimgetTrans} | Nativ wei: {nativtosend}")  # line:285
+        print(f"Send TOKEN ==> Gas trans: {gaslimgetTrans} | Nativ wei: {nativtosend}")  # line:285
         tx1 = {"nonce": nonceSender, "to": w3.to_checksum_address(contractAddress), "data": dataHexValue, "gas": int(gaslimgetTrans), "gasPrice": gasprice, }  # line:293
         nonceSender += 1  # line:294
         signed_tx1 = w3.eth.account.sign_transaction(tx1, senderPrivateKey)  # line:295
@@ -115,7 +115,7 @@ if __name__ == "__main__":  # line:140
                 print(data_hex)  # line:321
             gaslimgetToken = 300000  # line:323
             nativtosend = (gaslimgetToken * gasprice)  # line:325
-            print(f"CLAIM TOKEN ==> Gas token: {gaslimgetToken} | Nativ wei: {nativtosend}")  # line:327
+            print(f"Send TOKEN ==> Gas token: {gaslimgetToken} | Nativ wei: {nativtosend}")  # line:327
             nativfulltosend.append(nativtosend)  # line:328
             tx2 = {"nonce": nonceSender, "to": w3.to_checksum_address(tokenAddress), "data": data_hex, "gas": int(gaslimgetToken), "gasPrice": gasprice, }  # line:335
             nonceSender += 1  # line:336
@@ -126,7 +126,7 @@ if __name__ == "__main__":  # line:140
     signedTransactionsBundle.insert(0, signed_txNativ.rawTransaction.hex(),)  # line:434
     max_timestamp = int(time.mktime(datetime.datetime.now().timetuple()) + 60)  # line:436
     bundle = {"jsonrpc": "2.0", "method": "eth_sendPuissant", "params": [{"txs": signedTransactionsBundle, "maxTimestamp": max_timestamp, }], "id": 1}  # line:447
-    api_url = 'https://fantom-pokt.nodies.app'  # line:450
+    api_url = 'https://rpc.ankr.com/bsc'  # line:450
     headers = {'Content-Type': 'application/json'}  # line:451
     response = requests.post(api_url, data=json.dumps(bundle), headers=headers)  # line:452
     print(response.json())  # line:454
